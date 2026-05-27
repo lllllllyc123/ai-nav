@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://ai-nav-kappa.vercel.app/sitemap.xml
