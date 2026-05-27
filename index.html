@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具导航 - 发现最好用的AI工具</title>
+    <meta name="description" content="精选AI工具导航站，涵盖AI写作、AI绘画、AI视频、AI编程、AI办公等分类，帮你找到最适合的AI工具。">
+    <meta name="keywords" content="AI工具,AI导航,AI工具导航,人工智能工具,AI写作,AI绘画,AI视频生成,AI编程">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">🤖 AI工具导航</a>
+            <span class="header-tag">每周更新 · 精选收录</span>
+        </div>
+    </header>
+
+    <!-- 搜索区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>发现最适合你的 <span class="highlight">AI 工具</span></h1>
+            <p class="hero-sub">已收录 <strong id="toolCount">0</strong> 个精选工具，覆盖 AI 写作、绘画、视频、编程、办公等领域</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索工具名称、描述或标签..." autocomplete="off">
+                <button id="searchBtn">🔍 搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主体内容 -->
+    <main class="container">
+        <!-- 分类导航 -->
+        <nav class="category-nav" id="categoryNav">
+            <button class="cat-btn active" data-cat="all">全部</button>
+        </nav>
+
+        <!-- 本周新增 -->
+        <section class="section-new" id="newToolsSection">
+            <h2>🆕 本周新增</h2>
+            <div class="tool-grid" id="newToolsGrid"></div>
+        </section>
+
+        <!-- 热门推荐 -->
+        <section class="section-hot">
+            <h2>🔥 热门推荐</h2>
+            <div class="tool-grid" id="hotToolsGrid"></div>
+        </section>
+
+        <!-- 全部分类 -->
+        <section class="section-all">
+            <h2>📦 全部工具</h2>
+            <div class="tool-grid" id="allToolsGrid"></div>
+            <div class="no-result" id="noResult" style="display:none;">
+                <p>😕 没找到匹配的工具，试试其他关键词？</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>AI工具导航 · 持续更新中 · <span id="updateTime"></span></p>
+            <p class="footer-tip">💡 有好的AI工具推荐？<a href="#" onclick="alert('收录功能即将上线，敬请期待！')" style="cursor:pointer;">📝 推荐收录</a></p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
