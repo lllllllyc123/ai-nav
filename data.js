@@ -85,6 +85,24 @@ const TOOLS = [
         url: "https://chatglm.cn", tags: ["中文", "写作", "搜索"],
         category: "writing", pricing: "free",
     },
+    {
+        name: "腾讯元宝", desc: "腾讯出品的AI对话助手，支持微信公众号内容总结和联网搜索",
+        url: "https://yuanbao.tencent.com", tags: ["中文", "写作", "搜索"],
+        category: "writing", pricing: "free", isNew: true,
+    },
+
+    {
+        name: "秘塔AI搜索", desc: "AI搜索引擎，无广告直达结果，支持学术搜索和深度研究模式",
+        url: "https://metaso.cn", tags: ["搜索", "学术", "中文"],
+        category: "writing", pricing: "free",
+    },
+
+    {
+        name: "Monica", desc: "AI浏览器助手，集成ChatGPT/Claude等主流模型，支持网页摘要和写作",
+        url: "https://monica.im", tags: ["写作", "翻译", "浏览器"],
+        category: "writing", pricing: "freemium",
+    },
+
 
     // ==================== AI??/?? ====================
     {
@@ -140,6 +158,18 @@ const TOOLS = [
         url: "https://ideogram.ai", tags: ["绘画", "文字", "设计"],
         category: "image", pricing: "freemium",
     },
+    {
+        name: "堆友", desc: "阿里旗下AI设计平台，支持AI生成3D素材、图标和场景设计",
+        url: "https://www.duidui.com", tags: ["设计", "3D", "素材"],
+        category: "image", pricing: "freemium",
+    },
+
+    {
+        name: "Flux AI", desc: "Black Forest Labs的AI图像生成模型，照片级真实感，开源可部署",
+        url: "https://flux.ai", tags: ["绘画", "照片", "开源"],
+        category: "image", pricing: "freemium", isNew: true,
+    },
+
 
     // ==================== AI?? ====================
     {
@@ -183,6 +213,18 @@ const TOOLS = [
         url: "https://www.jichuang.tech", tags: ["???", "???", "??"],
         category: "video", pricing: "free",
     },
+    {
+        name: "Luma AI", desc: "AI视频生成Dream Machine，照片级画质，运动轨迹流畅自然",
+        url: "https://lumalabs.ai", tags: ["视频生成", "3D", "照片"],
+        category: "video", pricing: "freemium",
+    },
+
+    {
+        name: "度加剪辑", desc: "百度AI视频创作工具，AI写稿+数字人播报+一键成片",
+        url: "https://dujia.baidu.com", tags: ["剪辑", "数字人", "中文"],
+        category: "video", pricing: "free",
+    },
+
 
     // ==================== AI??/?? ====================
     {
@@ -232,6 +274,18 @@ const TOOLS = [
         url: "https://tongyi.aliyun.com/efficiency", tags: ["会议", "转录", "中文"],
         category: "office", pricing: "free",
     },
+    {
+        name: "腾讯文档AI", desc: "腾讯文档内置AI助手，支持智能写作、表格分析和PPT生成",
+        url: "https://docs.qq.com", tags: ["文档", "表格", "PPT"],
+        category: "office", pricing: "free",
+    },
+
+    {
+        name: "钉钉AI", desc: "钉钉内置AI助手，支持聊天总结、文档协作和智能审批",
+        url: "https://www.dingtalk.com", tags: ["协作", "会议", "审批"],
+        category: "office", pricing: "free",
+    },
+
 
     // ==================== AI?? ====================
     {
@@ -269,6 +323,18 @@ const TOOLS = [
         url: "https://replit.com", tags: ["全栈", "部署", "原型"],
         category: "coding", pricing: "freemium",
     },
+    {
+        name: "Tabnine", desc: "AI代码补全工具，支持本地模型运行，保护代码隐私安全",
+        url: "https://www.tabnine.com", tags: ["补全", "隐私", "多语言"],
+        category: "coding", pricing: "freemium",
+    },
+
+    {
+        name: "Devin", desc: "Cognition出品的AI编程代理，可独立理解需求并完成完整开发",
+        url: "https://www.cognition.ai", tags: ["代理", "全栈", "自动化"],
+        category: "coding", pricing: "paid", isNew: true,
+    },
+
 
     // ==================== AI??/?? ====================
     {
@@ -300,6 +366,18 @@ const TOOLS = [
         url: "https://www.yimeizhushou.com", tags: ["自媒体", "分发", "中文"],
         category: "marketing", pricing: "freemium",
     },
+    {
+        name: "5118", desc: "AI加持的SEO和关键词分析工具，支持全网数据挖掘和竞品分析",
+        url: "https://www.5118.com", tags: ["SEO", "关键词", "中文"],
+        category: "marketing", pricing: "freemium",
+    },
+
+    {
+        name: "易撰", desc: "AI自媒体内容工具，爆文分析+原创检测+多平台一键分发",
+        url: "https://www.yizhuan5.com", tags: ["自媒体", "爆文", "中文"],
+        category: "marketing", pricing: "freemium",
+    },
+
 
     // ==================== AI?? ====================
     {
@@ -337,6 +415,18 @@ const TOOLS = [
         url: "https://ai.cnki.net", tags: ["论文", "文献", "中文"],
         category: "academic", pricing: "free",
     },
+    {
+        name: "SciSpace", desc: "AI学术研究平台，论文搜索+PDF解析+公式提取一站式",
+        url: "https://scispace.com", tags: ["论文", "搜索", "解析"],
+        category: "academic", pricing: "freemium",
+    },
+
+    {
+        name: "ResearchRabbit", desc: "AI文献探索工具，通过引用关系图谱发现相关论文",
+        url: "https://researchrabbit.ai", tags: ["文献", "引用", "发现"],
+        category: "academic", pricing: "free",
+    },
+
 
     // ==================== ??AI?? ====================
     {
@@ -368,5 +458,23 @@ const TOOLS = [
         url: "https://tingwu.aliyun.com", tags: ["语音", "转录", "中文"],
         category: "other", pricing: "free",
     },
+    {
+        name: "Character.AI", desc: "AI角色对话平台，可创建和任何虚拟角色对话",
+        url: "https://character.ai", tags: ["对话", "角色", "娱乐"],
+        category: "other", pricing: "freemium",
+    },
+
+    {
+        name: "Poe", desc: "Quora出品的AI聚合平台，一个入口使用ChatGPT、Claude等多种模型",
+        url: "https://poe.com", tags: ["聚合", "对话", "多模型"],
+        category: "other", pricing: "freemium",
+    },
+
+    {
+        name: "天工AI", desc: "昆仑万维AI全能助手，支持AI搜索、写作、图像和音乐生成",
+        url: "https://www.tiangong.cn", tags: ["搜索", "写作", "中文"],
+        category: "other", pricing: "free",
+    },
+
 
 ];
