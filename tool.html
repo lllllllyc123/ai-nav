@@ -93,6 +93,7 @@
     </footer>
 
     <script src="data.js"></script>
+    <script src="affiliate.js"></script>
     <script>
     // ---- 工具详情页渲染 ----
     function getParam(name) {
@@ -182,7 +183,7 @@
         html += '<h1>' + tool.name + '</h1>';
         html += '<div class="detail-badges">' + badges + '</div>';
         html += '<p class="detail-desc">' + tool.desc + '</p>';
-        html += '<a href="' + tool.url + '" target="_blank" rel="noopener" class="btn-visit" onclick="recordClick(\'' + tool.url + '\')">🔗 访问官网</a>';
+        html += '<a href="' + getAffiliateUrl(tool) + '" target="_blank" rel="noopener" class="btn-visit" onclick="recordClick(\'' + getAffiliateUrl(tool) + '\')">🔗 访问官网</a>';
         html += '</div></section>';
 
         // Info section

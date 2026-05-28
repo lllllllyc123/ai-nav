@@ -58,7 +58,7 @@ function createToolCard(tool) {
     card.className = 'tool-card';
     card.dataset.cat = tool.category;
     card.addEventListener('click', () => {
-        recordClick(tool.url);
+        var link = typeof getAffiliateUrl === 'function' ? getAffiliateUrl(tool) : tool.url; recordClick(link);
         location.href = 'tool.html?name=' + encodeURIComponent(tool.name);
     });
 
