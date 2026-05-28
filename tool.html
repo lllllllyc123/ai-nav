@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">AI工具导航</title>
+    <meta name="description" id="pageDesc" content="AI工具导航 - 发现最适合你的AI工具">
+    <meta name="keywords" content="AI工具,AI导航,AI工具导航">
+    <link rel="stylesheet" href="style.css">
+
+    <meta property="og:title" id="ogTitle" content="AI工具导航">
+    <meta property="og:description" id="ogDesc" content="发现最适合你的AI工具">
+    <meta property="og:image" content="https://ai-nav-kappa.vercel.app/og-image.png">
+    <meta property="og:url" id="ogUrl" content="https://ai-nav-kappa.vercel.app">
+    <meta property="og:type" content="website">
+
+    <style>
+        .detail-hero {
+            text-align: center;
+            padding: 48px 20px 40px;
+            background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+        }
+        .detail-hero h1 { font-size: 34px; margin-bottom: 8px; }
+        .detail-badges { margin: 12px 0 16px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .badge { font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+        .badge-hot { background: #fef2f2; color: #ef4444; }
+        .badge-new { background: #ecfdf5; color: #10b981; }
+        .badge-free { background: #eff6ff; color: #3b82f6; }
+        .badge-freemium { background: #fefce8; color: #ca8a04; }
+        .badge-paid { background: #fef2f2; color: #dc2626; }
+
+        .detail-desc {
+            max-width: 600px; margin: 0 auto 24px;
+            font-size: 17px; color: #475569; line-height: 1.7;
+        }
+        .btn-visit {
+            display: inline-block; padding: 12px 36px; font-size: 16px; font-weight: 600;
+            background: var(--primary); color: white; border-radius: 8px; border: none; cursor: pointer;
+            text-decoration: none; transition: background 0.2s;
+        }
+        .btn-visit:hover { background: var(--primary-dark); text-decoration: none; }
+
+        .detail-content { padding: 40px 0 20px; }
+        .detail-content h2 { font-size: 22px; margin-bottom: 16px; color: var(--text); }
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px; margin-bottom: 40px;
+        }
+        .info-card {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 16px 20px;
+        }
+        .info-card .label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .info-card .value { font-size: 16px; font-weight: 600; color: var(--text); }
+
+        .related { padding: 30px 0 50px; }
+        .related h2 { font-size: 22px; margin-bottom: 20px; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+        .tool-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 16px 20px; cursor: pointer; transition: box-shadow 0.2s;
+        }
+        .tool-card:hover { box-shadow: var(--shadow-hover); }
+        .tool-card .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .tool-card .tool-name { font-weight: 600; font-size: 15px; color: var(--text); }
+        .tool-card .tool-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.5; }
+        .tool-card .card-footer { display: flex; justify-content: space-between; align-items: center; }
+        .tool-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+        .tool-tag { font-size: 11px; padding: 2px 8px; background: #f1f5f9; border-radius: 4px; color: var(--text-secondary); }
+
+        .not-found { text-align: center; padding: 80px 20px; }
+        .not-found h2 { font-size: 48px; margin-bottom: 12px; }
+        .not-found p { color: var(--text-secondary); margin-bottom: 24px; }
+
+        .detail-footer { padding: 20px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 13px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">🤖 AI工具导航</a>
+            <span class="header-tag">每周更新 · 精选收录</span>
+        </div>
+    </header>
+
+    <!-- 详情内容由 JS 动态渲染 -->
+    <main id="mainContent"></main>
+
+    <footer class="detail-footer">
+        <div class="container">
+            <p>AI工具导航 · <a href="/">返回首页</a></p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+    // ---- 工具详情页渲染 ----
+    function getParam(name) {
+        var url = new URL(window.location.href);
+        return url.searchParams.get(name) || '';
+    }
+
+    function getPricingLabel(p) {
+        if (p === 'free') return '免费';
+        if (p === 'paid') return '付费';
+        return '部分免费';
+    }
+
+    function getPricingBadgeClass(p) {
+        if (p === 'free') return 'badge-free';
+        if (p === 'paid') return 'badge-paid';
+        return 'badge-freemium';
+    }
+
+    function getCategoryName(key) {
+        var cat = CATEGORIES.find(function(c) { return c.key === key; });
+        return cat ? (cat.icon + ' ' + cat.name) : key;
+    }
+
+    function renderToolCard(tool) {
+        var badges = '';
+        if (tool.isHot) badges += '<span class="badge badge-hot">??</span>';
+        if (tool.isNew) badges += '<span class="badge badge-new">?</span>';
+        if (tool.pricing === 'free') badges += '<span class="badge badge-free">??</span>';
+
+        var tags = tool.tags.slice(0, 3).map(function(t) { return '<span class="tool-tag">' + t + '</span>'; }).join('');
+
+        var detailUrl = 'tool.html?name=' + encodeURIComponent(tool.name);
+
+        return ''
+            + '<a href="' + detailUrl + '" class="tool-card" style="display:block;text-decoration:none;color:inherit">'
+            + '<div class="card-header">'
+            + '<span class="tool-name">' + tool.name + '</span>'
+            + '<span class="tool-badges">' + badges + '</span>'
+            + '</div>'
+            + '<div class="tool-desc">' + tool.desc + '</div>'
+            + '<div class="card-footer">'
+            + '<span class="tool-tags">' + tags + '</span>'
+            + '</div>'
+            + '</a>';
+    }
+
+    function init() {
+        var toolName = decodeURIComponent(getParam('name'));
+        var main = document.getElementById('mainContent');
+
+        if (!toolName) {
+            main.innerHTML = '<div class="not-found"><h2>🤔</h2><p>未指定工具名称</p><a href="/" class="btn-visit">← 返回首页</a></div>';
+            return;
+        }
+
+        var tool = TOOLS.find(function(t) { return t.name === toolName; });
+
+        if (!tool) {
+            main.innerHTML = '<div class="not-found"><h2>😕</h2><p>未找到工具「' + toolName + '」</p><a href="/" class="btn-visit">← 返回首页</a></div>';
+            return;
+        }
+
+        // Update SEO meta
+        var title = tool.name + ' - AI工具导航';
+        var desc = tool.desc;
+        document.title = title;
+        document.getElementById('pageTitle').textContent = title;
+        document.getElementById('pageDesc').setAttribute('content', desc);
+        document.getElementById('ogTitle').setAttribute('content', title);
+        document.getElementById('ogDesc').setAttribute('content', desc);
+        document.getElementById('ogUrl').setAttribute('content', 'https://ai-nav-kappa.vercel.app/tool.html?name=' + encodeURIComponent(tool.name));
+        document.querySelector('meta[name="keywords"]').setAttribute('content', 'AI工具,' + tool.name + ',' + tool.tags.join(','));
+
+        // Build badges HTML
+        var badges = '';
+        if (tool.isHot) badges += '<span class="badge badge-hot">🔥 热门</span>';
+        if (tool.isNew) badges += '<span class="badge badge-new">🆕 本周新增</span>';
+        badges += '<span class="badge ' + getPricingBadgeClass(tool.pricing) + '">💰 ' + getPricingLabel(tool.pricing) + '</span>';
+
+        // Render
+        var html = '';
+
+        // Hero
+        html += '<section class="detail-hero">';
+        html += '<div class="container">';
+        html += '<h1>' + tool.name + '</h1>';
+        html += '<div class="detail-badges">' + badges + '</div>';
+        html += '<p class="detail-desc">' + tool.desc + '</p>';
+        html += '<a href="' + tool.url + '" target="_blank" rel="noopener" class="btn-visit" onclick="recordClick(\'' + tool.url + '\')">🔗 访问官网</a>';
+        html += '</div></section>';
+
+        // Info section
+        html += '<section class="detail-content container">';
+        html += '<h2>📋 工具信息</h2>';
+        html += '<div class="info-grid">';
+        html += '<div class="info-card"><div class="label">分类</div><div class="value">' + getCategoryName(tool.category) + '</div></div>';
+        html += '<div class="info-card"><div class="label">价格</div><div class="value">' + getPricingLabel(tool.pricing) + '</div></div>';
+        html += '<div class="info-card"><div class="label">标签</div><div class="value" style="display:flex;gap:4px;flex-wrap:wrap">' + tool.tags.map(function(t) { return '<span class="tool-tag" style="font-size:12px">' + t + '</span>'; }).join('') + '</div></div>';
+        html += '</div>';
+        html += '</section>';
+
+        // Related tools
+        var related = TOOLS.filter(function(t) { return t.category === tool.category && t.name !== tool.name; });
+        if (related.length > 0) {
+            html += '<section class="related container">';
+            html += '<h2>📂 同分类工具</h2>';
+            html += '<div class="tool-grid">';
+            related.forEach(function(t) {
+                html += renderToolCard(t);
+            });
+            html += '</div></section>';
+        }
+
+        main.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

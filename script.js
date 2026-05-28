@@ -59,7 +59,7 @@ function createToolCard(tool) {
     card.dataset.cat = tool.category;
     card.addEventListener('click', () => {
         recordClick(tool.url);
-        window.open(tool.url, '_blank');
+        location.href = 'tool.html?name=' + encodeURIComponent(tool.name);
     });
 
     // 标签
