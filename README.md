@@ -1,6 +1,6 @@
 ﻿# 🤖 AI 工具导航站
 
-> 零依赖纯静态 AI 工具导航站，44 个精选工具，8 个分类。双击即用，拖拽部署。
+> 零依赖纯静态 AI 工具导航站，56 个精选工具，8 个分类。双击即用，拖拽部署。
 
 **在线地址**：**[https://ai-nav-kappa.vercel.app](https://ai-nav-kappa.vercel.app)**（GitHub → Vercel 自动部署）
 
@@ -55,14 +55,14 @@ cd ai-nav && npx serve .
 
 | key | 名称 | 工具数 |
 |:---|:---|:---|
-| `writing` | AI写作 | 8 |
-| `image` | AI绘画/图像 | 7 |
-| `video` | AI视频 | 6 |
-| `office` | AI办公/效率 | 6 |
-| `coding` | AI编程 | 4 |
-| `marketing` | AI营销/电商 | 4 |
-| `academic` | AI学术 | 5 |
-| `other` | 其他AI工具 | 4 |
+| `writing` | AI写作 | 10 |
+| `image` | AI绘画/图像 | 9 |
+| `video` | AI视频 | 7 |
+| `office` | AI办公/效率 | 8 |
+| `coding` | AI编程 | 6 |
+| `marketing` | AI营销/电商 | 5 |
+| `academic` | AI学术 | 6 |
+| `other` | 其他AI工具 | 5 |
 
 > 💡 每周五固定更新 3-5 个新工具，设 `isNew: true`，并在社媒同步"本周新增"通知。
 
@@ -86,7 +86,7 @@ ai-nav/
 
 ## ✅ 功能清单
 
-- [x] 44 个工具，8 个分类
+- [x] 56 个工具，8 个分类
 - [x] 实时搜索（名称 / 描述 / 标签）
 - [x] 分类筛选（三区域同步过滤）
 - [x] 🆕 本周新增 + 🔥 热门推荐 双区域
@@ -181,7 +181,7 @@ ai-nav/
 |:---|:---|
 | 用户登录/注册 | 变现不需要登录，加登录增加跳出率和维护成本 |
 | 手机号验证 | 国内短信 ~¥0.045/条，无收入前纯烧钱 |
-| 后端数据库 | 纯静态站够用，44 个工具 JSON 足够 |
+| 后端数据库 | 纯静态站够用，56 个工具 JSON 足够 |
 | 自建服务器 | Vercel 免费够用到日 UV 破万 |
 
 ---
@@ -195,7 +195,8 @@ ai-nav/
 | SEO 基建 | robots.txt + sitemap.xml + OG/Twitter meta |
 | 分析接入 | Microsoft Clarity（ID: `wxiw5yvrwx`） |
 | 部署 | GitHub → Vercel（`ai-nav-kappa.vercel.app`） |
-| 内容模板 | CONTENT.md：3 套 → 5 套（增加知乎问答截流 + 短视频脚本），润色对标爆款 |
+| 内容模板 |
+| 工具扩充 | +12 工具 -> 56 个（豆包、即梦AI、v0.dev、即创等）；收录入口改为 GitHub Issue | CONTENT.md：3 套 → 5 套（增加知乎问答截流 + 短视频脚本），润色对标爆款 |
 
 ---
 
@@ -206,7 +207,7 @@ ai-nav/
 - [ ] 开始执行内容发布节奏（先堆 12 条内容）
 - [ ] 工具详情页（价格、教程链接、评分）
 - [ ] 暗色模式切换
-- [ ] 用户提交收录表单
+- [x] 用户提交收录表单（GitHub Issue）
 - [ ] 自定义域名绑定
 
 ---
