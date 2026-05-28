@@ -43,7 +43,7 @@
     <header class="header">
         <div class="container">
             <a href="/" class="logo">🤖 AI工具导航</a>
-            <span class="header-tag">每周更新 · 精选收录</span>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button><span class="header-tag">每周更新 · 精选收录</span>
         </div>
     </header>
 
@@ -98,5 +98,21 @@
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+
+<script>
+(function(){
+    var s=localStorage.getItem('theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');
+    var b=document.getElementById('themeToggle');
+    if(s==='dark')b.textContent='☀️';
+    b.addEventListener('click',function(){
+        var c=document.documentElement.getAttribute('data-theme');
+        var n=c==='dark'?'':'dark';
+        document.documentElement.setAttribute('data-theme',n);
+        localStorage.setItem('theme',n);
+        b.textContent=n==='dark'?'☀️':'🌙';
+    });
+})();
+</script>
+
 </body>
 </html>
