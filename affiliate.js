@@ -45,7 +45,7 @@ var AFFILIATE_MAP = {
 
     // === 其他AI工具 ===
     // ElevenLabs 推荐: https://elevenlabs.io/affiliate
-    "ElevenLabs": "https://elevenlabs.io/?from=YOUR_CODE",
+    "ElevenLabs": "https://try.elevenlabs.io/dsxx4jkcrc4l",
 
     // Suno 联盟
     "Suno": "https://suno.com?ref=YOUR_CODE",
